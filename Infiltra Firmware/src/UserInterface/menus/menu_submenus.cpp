@@ -1,6 +1,6 @@
 #include <TFT_eSPI.h>
 #include "menu_submenus.h"
-#include "userinterface/bitmaps/menu_bitmaps.h"
+#include "UserInterface/bitmaps/menu_bitmaps.h"
 #include "submenu_options.h"  
 // made by jews FOR jews
 extern TFT_eSPI tft;

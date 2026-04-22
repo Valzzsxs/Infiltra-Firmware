@@ -10,6 +10,8 @@
 #elif defined(M5STICK_C_PLUS_1_1)
   // no M5* headers here
   #define ROT_TOP 2
+#elif defined(LILYGO_T_DISPLAY_S3) || defined(LILYGO_CC1101)
+  #define ROT_TOP 1
 #else
   // fallback like Plus 2 if nothing defined
   #include <M5StickCPlus2.h>
@@ -148,6 +150,20 @@ void updateButtons() {
   lastA = a; lastB = b; lastC = c;
   sExitEdge = false;
 
+#elif defined(LILYGO_T_DISPLAY_S3) || defined(LILYGO_CC1101)
+  // Raw pins
+  static bool lastA=false, lastB=false, lastC=false;
+  bool cA = (BTN_A_PIN >= 0) ? !digitalRead(BTN_A_PIN) : false;
+  bool cB = (BTN_B_PIN >= 0) ? !digitalRead(BTN_B_PIN) : false;
+  bool cC = (BTN_C_PIN >= 0) ? !digitalRead(BTN_C_PIN) : false;
+
+  sAEdge = cA && !lastA;
+  sBEdge = cB && !lastB;
+  sCEdge = cC && !lastC;
+  lastA = cA;
+  lastB = cB;
+  lastC = cC;
+  sExitEdge = false;
 #else
   // Fallback like Plus 2
   M5.update();

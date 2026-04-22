@@ -23,6 +23,9 @@
 #elif defined(M5STICK_C_PLUS_1_1)
   static constexpr uint8_t ROT_TOP = 2;
 
+#elif defined(LILYGO_T_DISPLAY_S3) || defined(LILYGO_CC1101)
+  static constexpr uint8_t ROT_TOP = 1;
+
 #else
   // Fallback to Plus 2 style init if nothing else is defined
   #include <M5StickCPlus2.h>
@@ -109,6 +112,17 @@ void setup() {
   // Plus 1.1: NO M5 display headers — we bring up power ourselves
   axp192_init_for_stickc_plus11();
 
+#elif defined(LILYGO_T_DISPLAY_S3)
+  // Bring up power for LilyGo T-Display S3
+  pinMode(15, OUTPUT);
+  digitalWrite(15, HIGH);
+  delay(50);
+  #if (defined(TFT_BL) && (TFT_BL >= 0))
+    pinMode(TFT_BL, OUTPUT);
+    digitalWrite(TFT_BL, TFT_BACKLIGHT_ON);
+  #endif
+#elif defined(LILYGO_CC1101)
+  //
 #else
   // Fallback (treat like Plus 2)
   M5.begin();

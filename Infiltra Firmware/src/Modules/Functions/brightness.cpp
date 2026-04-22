@@ -9,6 +9,8 @@
   static constexpr uint8_t ROT_TOP = 2;
 #elif defined(M5STICK_C_PLUS_1_1)
   static constexpr uint8_t ROT_TOP = 2;
+#elif defined(LILYGO_T_DISPLAY_S3) || defined(LILYGO_CC1101)
+  static constexpr uint8_t ROT_TOP = 1;
 #else
   #include <M5StickCPlus2.h>
   static constexpr uint8_t ROT_TOP = 2;
@@ -45,6 +47,8 @@ static void applyBrightness(int pct){
   #else
     ledcWrite(1, 255 - hw);
   #endif
+#elif defined(LILYGO_T_DISPLAY_S3) || defined(LILYGO_CC1101)
+  // use analogWrite for now if we want, or ignore
 #else
   
   M5.Lcd.setBrightness(hw);
