@@ -24,7 +24,7 @@
   static constexpr uint8_t ROT_TOP = 2;
 
 #elif defined(LILYGO_T_DISPLAY_S3) || defined(LILYGO_CC1101)
-  static constexpr uint8_t ROT_TOP = 3;
+  static constexpr uint8_t ROT_TOP = 1;
 
 #else
   // Fallback to Plus 2 style init if nothing else is defined

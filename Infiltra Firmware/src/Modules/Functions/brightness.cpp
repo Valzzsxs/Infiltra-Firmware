@@ -10,7 +10,7 @@
 #elif defined(M5STICK_C_PLUS_1_1)
   static constexpr uint8_t ROT_TOP = 2;
 #elif defined(LILYGO_T_DISPLAY_S3) || defined(LILYGO_CC1101)
-  static constexpr uint8_t ROT_TOP = 3;
+  static constexpr uint8_t ROT_TOP = 1;
 #else
   #include <M5StickCPlus2.h>
   static constexpr uint8_t ROT_TOP = 2;

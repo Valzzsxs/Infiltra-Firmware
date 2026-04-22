@@ -11,7 +11,7 @@
   // no M5* headers here
   #define ROT_TOP 2
 #elif defined(LILYGO_T_DISPLAY_S3) || defined(LILYGO_CC1101)
-  #define ROT_TOP 3
+  #define ROT_TOP 1
 #else
   // fallback like Plus 2 if nothing defined
   #include <M5StickCPlus2.h>
